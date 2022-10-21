@@ -2,6 +2,7 @@
 """Example script to run TrMRL in MetaWorld."""
 # pylint: disable=no-value-for-parameter
 import click
+# from ...src.garage.envs import metaworld
 import metaworld
 import torch
 from garage.torch import set_gpu_mode
@@ -101,7 +102,7 @@ def rl2_transformer_ml1(ctxt, env_name, task_name, seed, max_episode_length, met
     trainer = Trainer(ctxt)
 
     if env_name == "ML1":
-        ml_env = metaworld.ML1(task_name)
+        ml_env = metaworld.ML1Env(task_name)
         num_tasks = 50
     elif env_name == "ML10":
         ml_env = metaworld.ML10()

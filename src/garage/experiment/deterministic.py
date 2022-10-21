@@ -33,13 +33,13 @@ def set_seed(seed):
         except ImportError:
             pass
     if 'torch' in sys.modules:
-        warnings.warn(
-            'Enabeling deterministic mode in PyTorch can have a performance '
-            'impact when using GPU.')
+        # warnings.warn(
+        #     'Enabeling deterministic mode in PyTorch can have a performance '
+        #     'impact when using GPU.')
         import torch  # pylint: disable=import-outside-toplevel
         torch.manual_seed(seed)
-        torch.backends.cudnn.deterministic = True
-        torch.backends.cudnn.benchmark = False
+        # torch.backends.cudnn.deterministic = True
+        # torch.backends.cudnn.benchmark = False
 
 
 def get_seed():

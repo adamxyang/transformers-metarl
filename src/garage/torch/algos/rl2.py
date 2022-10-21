@@ -56,7 +56,7 @@ class RL2Env(Wrapper):
                 `observation_space`.
             dict: The episode-level information.
                 Note that this is not part of `env_info` provided in `step()`.
-                It contains information of he entire episode， which could be
+                It contains information of the entire episode which could be
                 needed to determine the first action (e.g. in the case of
                 goal-conditioned or MTRL.)
 

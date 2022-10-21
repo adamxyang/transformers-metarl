@@ -174,6 +174,7 @@ class OnlineMetaEvaluator:
         self._episodes_per_trial = worker_args['n_episodes_per_trial'] if 'n_episodes_per_trial' in worker_args else 1
         self._test_sampler = None
         self._max_episode_length = None
+        self._data_dict_list = []
 
     def evaluate(self, algo, test_episodes_per_task=None):
         """Evaluate the Meta-RL algorithm on the test tasks.
@@ -223,7 +224,10 @@ class OnlineMetaEvaluator:
                     name_map=name_map)
 
         self._eval_itr += 1
-        logger.log('Finished meta-testing...')     
+        logger.log('Finished meta-testing...')   
+        data_dict = env_updates[0]._task
+        data_dict['action'] = eps.actions
+        self._data_dict_list.append(data_dict)
 
 
     def _cluster_by_episode_number(self, episodes):
